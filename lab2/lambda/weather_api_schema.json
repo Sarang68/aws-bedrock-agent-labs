@@ -1,0 +1,66 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Weather API",
+    "version": "1.0.0",
+    "description": "API for getting weather information for cities"
+  },
+  "paths": {
+    "/weather": {
+      "get": {
+        "summary": "Get current weather for a city",
+        "description": "Returns current weather conditions including temperature, condition, humidity, and wind speed for a specified city",
+        "operationId": "getWeather",
+        "parameters": [
+          {
+            "name": "city",
+            "in": "query",
+            "description": "Name of the city to get weather for",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with weather data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "city": {
+                      "type": "string",
+                      "description": "City name"
+                    },
+                    "temperature": {
+                      "type": "number",
+                      "description": "Temperature in Fahrenheit"
+                    },
+                    "condition": {
+                      "type": "string",
+                      "description": "Weather condition (e.g., Sunny, Cloudy)"
+                    },
+                    "humidity": {
+                      "type": "number",
+                      "description": "Humidity percentage"
+                    },
+                    "wind_speed": {
+                      "type": "number",
+                      "description": "Wind speed in mph"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "description": "ISO timestamp of weather data"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
